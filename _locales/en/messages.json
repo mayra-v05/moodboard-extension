@@ -1,0 +1,20 @@
+{
+  "extName": {
+    "message": "Moodboard — Design inspiration"
+  },
+  "extDescription": {
+    "message": "Save Pinterest pins, Awwwards sites, sections, colors, fonts, gradients, motion and microcopy to your own moving inspiration board."
+  },
+  "actionTitle": {
+    "message": "Save to Moodboard"
+  },
+  "cmdSave": {
+    "message": "Save current page"
+  },
+  "cmdSection": {
+    "message": "Capture a favorite section"
+  },
+  "cmdNav": {
+    "message": "Capture a navigation (closed → open)"
+  }
+}

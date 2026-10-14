@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Moodboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+  <header class="p-head">
+    <div class="brand"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Moodboard</div>
+    <div class="row"><button id="openBoard" class="btn ghost small">Open bord <span id="boardIcon"></span></button></div>
+  </header>
+
+  <nav class="p-tabs" role="tablist">
+    <button class="on" data-tab="inspo" role="tab">Inspiratie</button>
+    <button data-tab="section" role="tab">Sectie</button>
+    <button data-tab="nav" role="tab">Navigatie</button>
+    <button data-tab="colors" role="tab">Kleuren</button>
+    <button data-tab="fonts" role="tab">Fonts</button>
+  </nav>
+
+  <!-- Inspiration -->
+  <section class="panel on" id="tab-inspo">
+    <label class="field">
+      <span>Link</span>
+      <input id="url" class="input" placeholder="Plak een Pinterest-, Awwwards- of website-link" autocomplete="off">
+    </label>
+
+    <div id="preview" class="p-preview"></div>
+
+    <div class="field">
+      <span>Preview</span>
+      <div class="seg" id="mode">
+        <button data-mode="auto" class="on">Automatisch</button>
+        <button data-mode="shot">Screenshot</button>
+        <button data-mode="rec"><i class="rec-dot"></i>Opname</button>
+      </div>
+      <p class="hint" id="modeHint"></p>
+    </div>
+
+    <div class="field" id="recOpts" hidden>
+      <span>Opnameduur</span>
+      <div class="seg" id="recSecs">
+        <button data-s="5">5 sec</button><button data-s="8" class="on">8 sec</button><button data-s="12">12 sec</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <span>Categorie</span>
+      <div class="chips" id="cats"></div>
+    </div>
+
+    <label class="field"><span>Project / klant</span><input id="project" class="input" list="projects" placeholder="bv. Nairiva"></label>
+    <datalist id="projects"></datalist>
+
+    <button id="saveInspo" class="btn primary block">Opslaan</button>
+  </section>
+
+  <!-- Section -->
+  <section class="panel" id="tab-section">
+    <div class="sec-illu" aria-hidden="true"><i></i><i class="pick"></i><i></i><i></i></div>
+    <div class="sec-text">
+      <strong>Favoriete sectie vastleggen</strong>
+      <p>Kies een hero, footer, pricing-blok of andere sectie op deze pagina. Er wordt een screenshot van gemaakt, ook als de sectie langer is dan je scherm.</p>
+    </div>
+    <div class="field">
+      <span>Vastleggen als</span>
+      <div class="seg" id="secMode">
+        <button data-m="shot" class="on">Screenshot</button>
+        <button data-m="video"><i class="rec-dot"></i>Opname</button>
+      </div>
+      <p class="hint" id="secModeHint"></p>
+    </div>
+    <div class="field" id="secSecsField" hidden>
+      <span>Opnameduur</span>
+      <div class="seg" id="secSecs">
+        <button data-s="5">5 sec</button><button data-s="8" class="on">8 sec</button><button data-s="12">12 sec</button>
+      </div>
+    </div>
+    <button id="pickSection" class="btn primary block needs-page">Sectie selecteren op de pagina</button>
+    <ul class="sec-tips">
+      <li>Klik op een sectie, of sleep een eigen kader</li>
+      <li><kbd>↑</kbd> <kbd>↓</kbd> kiest een grotere of kleinere sectie, <kbd>Enter</kbd> bevestigt</li>
+      <li>Sneltoets zonder popup: <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd></li>
+    </ul>
+  </section>
+
+  <!-- Navigation -->
+  <section class="panel" id="tab-nav">
+    <div class="nav-illu" aria-hidden="true">
+      <div class="ni-bar"><i class="ni-logo"></i><i></i><i class="ni-on"></i><i></i></div>
+      <div class="ni-menu"><i></i><i></i><i></i></div>
+    </div>
+    <div class="sec-text">
+      <strong>Navigatie opnemen</strong>
+      <p>Leg vast hoe een menu eruitziet als het dicht is én als het uitgeklapt is. Wordt opgeslagen bij <b>Navigaties</b> op je bord.</p>
+    </div>
+    <div class="field">
+      <span>Vastleggen als</span>
+      <div class="seg" id="navMode">
+        <button data-m="photos">Screenshots</button>
+        <button data-m="video" class="on"><i class="rec-dot"></i>Opname</button>
+      </div>
+      <p class="hint" id="navModeHint"></p>
+    </div>
+
+    <div id="navVideoOpts" class="nav-opts">
+      <div class="field">
+        <span>Opnameduur</span>
+        <div class="seg" id="navSecs">
+          <button data-s="5">5 sec</button><button data-s="8" class="on">8 sec</button><button data-s="12">12 sec</button>
+        </div>
+      </div>
+      <div class="field">
+        <span>Soort navigatie</span>
+        <div class="chips" id="navCats"></div>
+      </div>
+    </div>
+
+    <div id="navPhotoOpts" class="nav-opts" hidden>
+      <ol class="nav-steps">
+        <li>Menu dicht → druk op <kbd>Enter</kbd></li>
+        <li>Klap het menu open (klik of hover) → <kbd>Enter</kbd></li>
+        <li>Kies het soort navigatie en sla op</li>
+      </ol>
+      <label class="check"><input type="checkbox" id="navVideo" checked> Ook video van het openklappen</label>
+      <label class="check"><input type="checkbox" id="navMobile"> Op mobiel formaat (390px, voor hamburgermenu’s)</label>
+    </div>
+
+    <button id="captureNav" class="btn primary block needs-page"><i class="rec-dot"></i> Opnemen</button>
+    <p class="hint">Sneltoets zonder popup: <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></p>
+  </section>
+
+  <!-- Colors -->
+  <section class="panel" id="tab-colors">
+    <button id="extractColors" class="btn block needs-page">Kleuren uit de CSS van deze website halen</button>
+    <p class="hint">Kijkt naar alle stylesheets van de site (ook van andere pagina’s), niet alleen naar wat je ziet. Klik op een kleur om hem aan of uit te zetten.</p>
+    <div id="swatches" class="p-swatches"></div>
+    <div class="row">
+      <input type="color" id="pick" value="#3dffb0" aria-label="Kies kleur">
+      <input id="hex" class="input mono" placeholder="#3dffb0" aria-label="Hex-code">
+      <button id="addHex" class="btn">Toevoegen</button>
+    </div>
+    <label class="field"><span>Naam palet</span><input id="palName" class="input" placeholder="bv. Warm editorial"></label>
+    <button id="savePalette" class="btn primary block">Palet opslaan</button>
+  </section>
+
+  <!-- Fonts -->
+  <section class="panel" id="tab-fonts">
+    <button id="detectFonts" class="btn block needs-page">Lettertypes van deze pagina detecteren</button>
+    <ul id="fontList" class="p-fonts"></ul>
+    <div class="row">
+      <input id="fontName" class="input" list="popularFonts" placeholder="Of typ een lettertype, bv. Fraunces">
+      <button id="addFont" class="btn">Toevoegen</button>
+    </div>
+    <datalist id="popularFonts"></datalist>
+    <label class="check" id="comboWrap" hidden><input type="checkbox" id="combo" checked> Opslaan als combinatie (heading + body)</label>
+    <button id="saveFonts" class="btn primary block">Lettertypes opslaan</button>
+  </section>
+
+  <div id="done" class="p-done" hidden>
+    <div class="done-icon"></div>
+    <strong id="doneTitle">Opgeslagen</strong>
+    <p id="doneText"></p>
+    <div class="row center">
+      <button class="btn" id="doneAgain">Nog iets opslaan</button>
+      <button class="btn primary" id="doneBoard">Bekijk bord</button>
+    </div>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

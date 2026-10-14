@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moodboard</title>
+  <link rel="icon" href="icons/32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/board.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Moodboard</div>
+    <label class="search">
+      <span id="searchIcon"></span>
+      <input id="q" type="search" placeholder="Zoek op titel, tag, kleur, font…" autocomplete="off">
+      <kbd>/</kbd>
+    </label>
+    <div class="top-actions">
+      <button id="exportBtn" class="btn ghost small">Export</button>
+      <button id="importBtn" class="btn ghost small">Import</button>
+      <input type="file" id="importFile" accept="application/json" hidden>
+      <button id="addBtn" class="btn primary"><span id="addIcon"></span>Toevoegen</button>
+    </div>
+  </header>
+
+  <div class="intro">
+    <h1>Jouw <em>inspiratie</em>, op één plek.</h1>
+    <nav class="types" id="types" aria-label="Soort"></nav>
+  </div>
+
+  <div class="filters" id="filters"></div>
+
+  <main id="grid" class="grid" aria-live="polite"></main>
+  <section id="empty" class="empty" hidden></section>
+
+  <dialog id="modal" class="modal"></dialog>
+  <dialog id="detail" class="modal detail-modal"></dialog>
+  <div id="dropzone" class="dropzone"><div>Laat los om op te slaan</div></div>
+  <datalist id="fontlist"></datalist>
+  <datalist id="projectlist"></datalist>
+
+  <script type="module" src="board.js"></script>
+</body>
+</html>

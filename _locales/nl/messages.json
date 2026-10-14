@@ -1,0 +1,20 @@
+{
+  "extName": {
+    "message": "Moodboard — Design inspiratie"
+  },
+  "extDescription": {
+    "message": "Bewaar Pinterest-pins, Awwwards-sites, secties, kleuren, lettertypes, gradients, motion en microcopy op je eigen bewegende inspiratiebord."
+  },
+  "actionTitle": {
+    "message": "Opslaan op Moodboard"
+  },
+  "cmdSave": {
+    "message": "Huidige pagina opslaan"
+  },
+  "cmdSection": {
+    "message": "Sectie vastleggen als favoriet"
+  },
+  "cmdNav": {
+    "message": "Navigatie vastleggen (dicht → open)"
+  }
+}
